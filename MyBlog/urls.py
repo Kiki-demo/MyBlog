@@ -21,6 +21,7 @@ from users import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
+    url(r'', include('comments.urls')),
     # url(r'^$', views.index, name='index'),
     url(r'^users/', include('users.urls')),
     # 将 auth 应用中的 urls 模块包含进来

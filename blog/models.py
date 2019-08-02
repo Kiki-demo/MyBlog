@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.urls import reverse
+import markdown
+from django.utils.html import strip_tags
 
 from users.models import User
 
@@ -50,6 +52,10 @@ class Post(models.Model):
     # 这里我们通过 ForeignKey 把文章和 User 关联了起来。
     # 因为我们规定一篇文章只能有一个作者，而一个作者可能会写多篇文章，因此这是一对多的关联关系，和 Category 类似。
     author = models.ForeignKey(User)
+    views = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["-created_time"]
 
     def __unicode__(self):
         return u'%s 创建了 %s，属于分类:[%s],标签:[%s]' % (
@@ -60,3 +66,14 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'pk': self.pk})
+
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
+
+    def save(self, *args, **kwargs):
+        if not self.excerpt:
+            md = markdown.Markdown(extensions=['markdown.extensions.extra',
+                                               'markdown.extensions.codehilite', ])
+            self.excerpt = strip_tags(md.convert(self.body))[:54]
+        super(Post, self).save(*args, **kwargs)

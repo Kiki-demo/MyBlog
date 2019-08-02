@@ -899,7 +899,22 @@ img {
     font-size: 16px;
     margin-right: 5px;
 }
-
 .current a {
     color: red;
+}
+
+
+.pagination_default{
+    display:block;
+    width:20px;
+    height:20px;
+    background:green;
+    float:left;
+    margin:0 10px 0 10px;
+}
+.pagination_more{
+    background:transparent;
+}
+.pagination_current{
+    background:red;
 }
