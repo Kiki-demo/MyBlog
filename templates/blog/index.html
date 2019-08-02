@@ -43,7 +43,7 @@
     <a href="?page={{ i }}" class="pagination_default">{{ i }}</a>
     {% endfor %}
     {% endif %}
-    <a href="?page={{ page_obj.number }}" style="color: red" class="pagination_default pagination_current">
+    <a href="?page={{ page_obj.number }}" class="pagination_default pagination_current">
         {{page_obj.number }}
     </a>
     {% if right %}

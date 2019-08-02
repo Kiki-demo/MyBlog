@@ -903,18 +903,24 @@ img {
     color: red;
 }
 
-
+.pagination{
+    text-align:center;
+}
 .pagination_default{
     display:block;
     width:20px;
     height:20px;
-    background:green;
+    background:gray;
+    cursor:pointer;
     float:left;
+    text-align:center;
     margin:0 10px 0 10px;
 }
 .pagination_more{
     background:transparent;
+    margin:0 5px 0 5px;
 }
 .pagination_current{
     background:red;
+    color:white;
 }
