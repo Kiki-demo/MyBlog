@@ -1,7 +1,7 @@
 Pillow
 Pygments
 Markdown==2.6.8
-Pygments==2.2.0
+Pygments==2.7.4
 pytz==2016.10
 setuptools-scm
 django-haystack==2.6.1
